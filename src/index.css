@@ -6,17 +6,17 @@
   --font-serif: "Playfair Display", serif;
   --font-display: "Cinzel", serif;
   
-  --color-emerald-950: #022c22;
-  --color-emerald-900: #064e3b;
-  --color-emerald-800: #065f46;
-  --color-gold-500: #d4af37;
-  --color-gold-400: #f1c40f;
-  --color-gold-300: #f3d76e;
+  --color-navy-950: #000814;
+  --color-navy-900: #001226;
+  --color-navy-800: #001c3d;
+  --color-silver-500: #A8A9AD;
+  --color-silver-400: #D1D2D4;
+  --color-silver-300: #E6E7E8;
 }
 
 @layer base {
   body {
-    @apply bg-emerald-950 text-white font-sans antialiased;
+    @apply bg-navy-950 text-white font-sans antialiased;
   }
   
   h1, h2, h3, h4 {
@@ -24,22 +24,81 @@
   }
 }
 
-.gold-gradient {
-  background: linear-gradient(45deg, #d4af37, #f3d76e, #d4af37);
+.silver-gradient {
+  background: linear-gradient(
+    110deg,
+    #707070 10%,
+    #A8A9AD 30%,
+    #ffffff 50%,
+    #A8A9AD 70%,
+    #707070 90%
+  );
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
 }
 
-.gold-border {
+@keyframes shine {
+  0% { background-position: -100% center; }
+  100% { background-position: 100% center; }
+}
+
+@keyframes pulse-silver {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+.pulse-qr {
+  animation: pulse-silver 3s ease-in-out infinite;
+}
+
+.silver-border {
   border: 1px solid transparent;
-  background: linear-gradient(to right, #022c22, #022c22) padding-box,
-              linear-gradient(45deg, #d4af37, #f3d76e, #d4af37) border-box;
+  background: linear-gradient(to right, #000814, #000814) padding-box,
+              linear-gradient(
+                110deg,
+                #707070 10%,
+                #A8A9AD 30%,
+                #ffffff 50%,
+                #A8A9AD 70%,
+                #707070 90%
+              ) border-box;
+  background-size: 200% auto;
+  animation: shine 4s linear infinite;
 }
 
-.emerald-glass {
-  background: rgba(6, 78, 59, 0.4);
+.shine-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine-btn 3s infinite;
+}
+
+@keyframes shine-btn {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.navy-glass {
+  background: rgba(0, 8, 20, 0.6);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(168, 169, 173, 0.2);
 }
 
 /* AR.js specific styles to hide the UI when not needed */
