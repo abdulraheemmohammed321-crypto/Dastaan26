@@ -1,0 +1,5 @@
+{
+  "name": "DASTAAN'26",
+  "description": "The official event portal for DASTAAN'26 Freshers. Reserve seats, download tickets, and experience the magic of our emerald and gold themed gala.",
+  "requestFramePermissions": ["camera"]
+}
